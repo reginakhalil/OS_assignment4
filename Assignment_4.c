@@ -7,11 +7,16 @@
 void* requestResource(void*);  //function to request resource
 int releaseResource(int*);    //function to release resrouce
 
-
-
-
 //Data structures 
-pthread_mutex_t available; 
-pthread_mutex_t allocation; 
-pthread_mutex_t max; 
-pthread_mutex_t need; 
+int* available;    //the available amount of each resource
+int** maximum;	   //the max demancd of each customer
+int** allocation;  //the amount currently allocated to each customer
+int** need; 	   //the remaining need of each customer
+
+
+
+//synchronization mutex
+pthread_mutex_t mutexAvailable;
+pthread_mutex_t mutexAllocation;
+pthread_mutex_t mutexMax;
+pthread_mutex_t mutexNeed;
