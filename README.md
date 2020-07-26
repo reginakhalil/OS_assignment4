@@ -1,6 +1,5 @@
-# Project Title
-One Paragraph of project description goes here
-
+# Assignment 4: Banker's Algorithm
+This software is composed of a multiple threaded program that implements the Banker's algorithm. Customers request and release bank resources. The banker must have the resources tracked. the banker will grant customers a request if they satisfy the safety algorithm. When a request does not leave the system in a safe state, it is denied by the banker. 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
