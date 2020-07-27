@@ -9,7 +9,7 @@ void* requestResource(void*);  //function to request resource
 int releaseResource(int*);    //function to release resrouce
 int isSafe(); 				//safe algorithm 
 void bankerRun(); 			//Runs the banker algorithm 
-void printResources(); 		//print function 
+void printResources(); 		//print system status to the screen
 int init(int, char**); 		//initialize arrays and variables
 void updateNeed(int); 		//update need variable
 int allocate(int, int*); 	//allocare resource
@@ -83,7 +83,28 @@ void bankerRun() {
 
 }
 
+
 void printResources() {
+	printf("\n==Current System Resources =="); 
+
+	//------Print Status of Available------
+	printf("\n===Available===\n");
+
+	for(int i = 0; i < resources; i++) 
+	{
+		printf("\tR%d", i); 
+	} 
+	printf(" \n");
+
+	for(int i = 0; i < resources; i++) 
+	{
+		printf("\t%d", available[i]);
+	}
+	//-------------------------------------
+
+	//-----Print Status of Allocation------
+	
+
 
 }
 
