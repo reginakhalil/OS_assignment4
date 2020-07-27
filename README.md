@@ -7,22 +7,22 @@ These instructions will get you a copy of the project up and running on your loc
 For development, you will need a linux operating system. If you do not have the linux OS, you can install VirtualBox and Ubuntu on your device. You will also need a text editor of your choice (Notepad++ recommended for Windows users and SublimeText recommended for Mac users), and Git. 
 
 ### Installing
- 	- Installation of VirtualBox: 
- 		1. Visit [VirtualBox Website](https://www.virtualbox.org/)
- 		2. Click on "Download VirtualBox 6.1"
- 		3. Then choose the appropriate platform for installation
- 		4. Dowload the file for the required Operating System and click to install and follow the installation steps. 
+- Installation of VirtualBox: 
+	1. Visit [VirtualBox Website](https://www.virtualbox.org/)
+	2. Click on "Download VirtualBox 6.1"
+	3. Then choose the appropriate platform for installation
+	4. Dowload the file for the required Operating System and click to install and follow the installation steps. 
 
- 	- Installation of Ubuntu machine in VirtualBox 
- 		1. Click here to download the Ubuntu VirtualBox Appliance file OSC10e.ova 
- 		2. Double-click on the downloaded file and follow the instruction on to install the appliance in VirtualBox Link
- 		3. Both the username and password for the Ubuntu Machine is osc.
- 		4. The steps would install a command-line based Ubuntu Server running version 4.4 of the Linux kernel. It includes standard development tools given as :
-			- gcc
-			- make
-			- java 8
-			- python
-			- ssh
+- Installation of Ubuntu machine in VirtualBox 
+	1. Click here to download the Ubuntu VirtualBox Appliance file OSC10e.ova 
+	2. Double-click on the downloaded file and follow the instruction on to install the appliance in VirtualBox Link
+	3. Both the username and password for the Ubuntu Machine is osc.
+	4. The steps would install a command-line based Ubuntu Server running version 4.4 of the Linux kernel. It includes standard development tools given as :
+	- gcc
+	- make
+	- java 8
+	- python
+	- ssh
  
 ## Running the tests
 Explain how to run the automated tests for this system
