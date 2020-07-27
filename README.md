@@ -7,6 +7,9 @@ These instructions will get you a copy of the project up and running on your loc
 For development, you will need a linux operating system. If you do not have the linux OS, you can install VirtualBox and Ubuntu on your device. You will also need a text editor of your choice (Notepad++ recommended for Windows users and SublimeText recommended for Mac users), and Git. 
 
 ### Installing
+- Installation of Git 
+Install or update to the latest version of [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). 
+
 - Installation of VirtualBox: 
 	1. Visit [VirtualBox Website](https://www.virtualbox.org/)
 	2. Click on "Download VirtualBox 6.1"
@@ -14,48 +17,43 @@ For development, you will need a linux operating system. If you do not have the 
 	4. Dowload the file for the required Operating System and click to install and follow the installation steps. 
 
 - Installation of Ubuntu machine in VirtualBox 
-	1. Click here to download the Ubuntu VirtualBox Appliance file OSC10e.ova 
+	1. Click [here](OSC10e.ova) to download the Ubuntu VirtualBox Appliance file  
 	2. Double-click on the downloaded file and follow the instruction on to install the appliance in VirtualBox Link
 	3. Both the username and password for the Ubuntu Machine is osc.
 	4. The steps would install a command-line based Ubuntu Server running version 4.4 of the Linux kernel. It includes standard development tools given as :
-	- gcc
-	- make
-	- java 8
-	- python
-	- ssh
+		- gcc
+		- make
+		- java 8
+		- python
+		- ssh
+
+- How to Run
+	- '$ make warnings_OK'
+	Complies your program with warnings enabled but not fatal. If successful, you should now have a file name Assignment_4 (with no extention). 
+
+	- '$ ./Assignment_4 10 5 7 8'
+	Runs the program. The number of each type of resource is passed via command line (i.e. 10 5 7 8). 
  
 ## Running the tests
 Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-Explain what these tests test and why
-
 Give an example
-### And coding style tests
-Explain what these tests test and why
-
-Give an example
-## Deployment
-Add additional notes about how to deploy this on a live system
 
 ## Built With
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
+
+### C programming language 
+
+### Linux environment
+
+##Contributing
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
-We use SemVer for versioning. For the versions available, see the tags on this repository.
-
 ## Authors
-Billie Thompson - Initial work - PurpleBooth
+Raghad Khalil - 180234400
+Divya Naiken - 
 See also the list of contributors who participated in this project.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
-## Acknowledgments
-Hat tip to anyone whose code was used
-Inspiration
-etc 
+## Acknowledgment
+
