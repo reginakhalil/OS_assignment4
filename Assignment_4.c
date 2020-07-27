@@ -162,6 +162,10 @@ void printResources() {
 
 void updateNeed(int process) {
 
+	for(int i = 0; i < resources; i++) {
+		need[process][i] = maximum[process][i] - allocation[process][i];
+	}
+
 }
 int allocate(int process, int* Request){
 
