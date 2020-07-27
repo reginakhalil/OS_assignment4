@@ -4,6 +4,7 @@
 #include <pthread.h> 
 #include <unistd.h> 
 
+//Functions
 void* requestResource(void*);  //function to request resource
 int releaseResource(int*);    //function to release resrouce
 int isSafe(); 				//safe algorithm 
@@ -31,6 +32,7 @@ pthread_mutex_t mutexAllocation;
 pthread_mutex_t mutexMax;
 pthread_mutex_t mutexNeed;
 
+//Main Function
 int main(int argc, char* argv[]) {
 
 	if (argc < 2) 
