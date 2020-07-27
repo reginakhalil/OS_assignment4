@@ -110,7 +110,7 @@ void printResources() {
 	}
 	printf("\n"); 
 
-	for (int i = 0; i < resources; i++) {
+	for (int i = 0; i < processes; i++) {
 		if (finish[i] == 0) {
 			printf("P%d\t", i);
 			for (int j = 0; j < resources; j++) {
@@ -121,6 +121,41 @@ void printResources() {
 	}
 	//-------------------------------------
 	
+
+	//-----Print Status of Maximum---------
+	printf("\n=== Maximum ===\n");
+	for (int i = 0; i < resources; i++) {
+		printf("\tR%d", i);
+	}
+	printf("\n"); 
+	for (int i = 0; i < processes; i++) {
+		if (finish[i] == 0) {
+			printf("P%d\t", i);
+			for (int j = 0; j < resources; j++) {
+				printf("%d\t", maximum[i][j]);
+			}
+			printf("\n");
+		}
+	}
+	//-------------------------------------
+
+	//-----Print Status of Need------------
+	printf("\n=== Need ===\n");
+	for (int i = 0; i < resources; i++) {
+		printf("\tR%d", i);
+	}
+	printf("\n"); 
+	for (int i = 0; i < processes; i++) {
+		if (finish[i] == 0) {
+			printf("P%d\t", i);
+			for (int j = 0; j < resources; j++) {
+				printf("%d\t", need[i][j]);
+			}
+			printf("\n");
+		}
+	}
+	//-------------------------------------
+
 
 
 }
