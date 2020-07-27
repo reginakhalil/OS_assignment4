@@ -20,8 +20,8 @@ int* available;    //the available amount of each resource
 int** maximum;	   //the max demancd of each customer
 int** allocation;  //the amount currently allocated to each customer
 int** need; 	   //the remaining need of each customer
-int resource; 
-int process; 
+int resources; 
+int processes; 
 int* finish; 
 int* safeseq; 
 
@@ -45,6 +45,27 @@ int init(int argc, char** argv){
 }
 
 void* requestResource(void* proc_in) {
+	int Request[resources]; 
+	int* proc = (int*)proc_in; 
+	int process = proc[0]; 
+
+	for (int k = 0; k < resources; k++){
+		Request[k] = proc[k + 1]; 
+	}
+
+	if (allocate(process, Request) == 1) {
+		printf("Request Satisfied.\n"); 
+		if (isComplete(process) == 1) {
+			printf("\tProcess %d has completed\n", process);
+		}
+	}
+	else {
+		printf("Request Denied.\n");
+	}
+	//free memory
+	free(proc); 
+	//exit the thread
+	pthread_exit(NULL); 
 
 }
 
