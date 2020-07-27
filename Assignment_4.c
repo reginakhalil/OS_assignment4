@@ -88,13 +88,13 @@ void printResources() {
 	printf("\n==Current System Resources =="); 
 
 	//------Print Status of Available------
-	printf("\n===Available===\n");
+	printf("\n=== Available ===\n");
 
 	for(int i = 0; i < resources; i++) 
 	{
 		printf("\tR%d", i); 
 	} 
-	printf(" \n");
+	printf("\n");
 
 	for(int i = 0; i < resources; i++) 
 	{
@@ -103,6 +103,23 @@ void printResources() {
 	//-------------------------------------
 
 	//-----Print Status of Allocation------
+	printf("\n=== Allocation ===\n"); 
+
+	for (int i = 0; i < resources; i++) {
+		printf("\tR%d", i);
+	}
+	printf("\n"); 
+
+	for (int i = 0; i < resources; i++) {
+		if (finish[i] == 0) {
+			printf("P%d\t", i);
+			for (int j = 0; j < resources; j++) {
+				printf("%d\t", allocation[i][j]);
+			}
+			printf("\n");
+		}
+	}
+	//-------------------------------------
 	
 
 
