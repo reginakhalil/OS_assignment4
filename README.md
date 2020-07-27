@@ -10,13 +10,13 @@ For development, you will need a linux operating system. If you do not have the 
 - Installation of Git 
 Install or update to the latest version of [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). 
 
-- Installation of VirtualBox: 
+#### Installation of VirtualBox: 
 	1. Visit [VirtualBox Website](https://www.virtualbox.org/)
 	2. Click on "Download VirtualBox 6.1"
 	3. Then choose the appropriate platform for installation
 	4. Dowload the file for the required Operating System and click to install and follow the installation steps. 
 
-- Installation of Ubuntu machine in VirtualBox 
+#### Installation of Ubuntu machine in VirtualBox 
 	1. Click [here](OSC10e.ova) to download the Ubuntu VirtualBox Appliance file  
 	2. Double-click on the downloaded file and follow the instruction on to install the appliance in VirtualBox Link
 	3. Both the username and password for the Ubuntu Machine is osc.
@@ -27,7 +27,7 @@ Install or update to the latest version of [Git](https://git-scm.com/book/en/v2/
 		- python
 		- ssh
 
-- How to Run
+#### How to Run
 	- '$ make warnings_OK'
 	Complies your program with warnings enabled but not fatal. If successful, you should now have a file name Assignment_4 (with no extention). 
 
