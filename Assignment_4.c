@@ -20,3 +20,12 @@ pthread_mutex_t mutexAvailable;
 pthread_mutex_t mutexAllocation;
 pthread_mutex_t mutexMax;
 pthread_mutex_t mutexNeed;
+
+int main(int argc, char* argv[]) {
+
+	if (argc < 2) 
+	{
+		printf("Input file name missing...exiting with error code -1\n");
+        return -1;
+	}
+}
