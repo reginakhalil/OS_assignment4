@@ -170,10 +170,33 @@ void updateNeed(int process) {
 int allocate(int process, int* Request){
 
 }
+
 int isComplete(int process){
+
+	for (int i = 0; i < resources; i++) {
+		if (allocation[process][i] != maximum[process[i]]) {
+			return 0; 
+		}
+	}
+
+	for (int i = 0; i < resources; i++) {
+		available[i] += maximum[process][i]; 
+	}
+
+	//Process complete
+	finsih[process] = 1; 
+	return 1; 
 
 }
 int isFinsihed(int* fin) {
+
+	for (int = 0; i < processes; i++) {
+		if (fin[i] == 0) {
+			return 0; 
+		}
+	}
+
+	return 1; 
 
 }
 
