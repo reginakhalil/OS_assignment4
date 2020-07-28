@@ -39,6 +39,16 @@ int main(int argc, char* argv[]) {
 	{
 		printf("Input file name missing...exiting with error code -1\n");
         return -1;
+
+        //Initialize the arrays and variables 
+        //Pass in the values from terminal
+        //init(argc, argv)
+
+        //Initialize the complete array 
+        for(int i=0; i< processes; i++)
+        {
+        	finish[j] =0;
+        }
 	}
 }
 
