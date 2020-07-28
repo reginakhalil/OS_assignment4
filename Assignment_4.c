@@ -96,21 +96,22 @@ int isSafe()
 	//Create the finished array
 	int* fin = malloc(sizeof(int) * processes); 
 
-
+	//Create the work array
 	if(!(work = malloc(sizeof(int) * resources)))
 	{
 		return 0; 
 	}
 
-
+	//Fill up the work array
 	for(int i=0; i < reasources; i++)
 	{
 		work[i] = available[i]
 	}
 
-	for(int j-0; j < processes; j++)
+	//Fill u the fin array
+	for(int j=0; j < processes; j++)
 	{
-		fin[i] = finish[i]
+		fin[j] = finish[j]
 	}
 
 	int check=0; 
