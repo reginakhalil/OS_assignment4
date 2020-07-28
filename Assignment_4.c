@@ -7,7 +7,7 @@
 //Functions
 void* requestResource(void*);  //function to request resource
 int releaseResource(int*);    //function to release resrouce
-int isSafe(); 				//safe algorithm 
+int isSafe(); 				//Function to check safe sequence (determines if there is a deadlock)
 void bankerRun(); 			//Runs the banker algorithm 
 void printResources(); 		//print system status to the screen
 int init(int, char**); 		//initialize arrays and variables
@@ -17,7 +17,7 @@ int isComplete(int); 		//Check for end process
 int isFinsihed(int*);		//Check if process is finished
 
 //Data structures 
-int* available;    //the available amount of each resource
+int* available;    //the amount of avaliable reasources 
 int** maximum;	   //the max demancd of each customer
 int** allocation;  //the amount currently allocated to each customer
 int** need; 	   //the remaining need of each customer
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
         //Initialize the complete array 
         for(int i=0; i< processes; i++)
         {
-        	finish[j] =0;
+        	finish[i] =0;
         }
 	}
 }
@@ -81,15 +81,50 @@ void* requestResource(void* proc_in) {
 
 }
 
-int releaseResource(int* Request) {
+int releaseResource(int* Request) 
+{
+
 
 }
 
-int isSafe() {
+
+int isSafe() 
+{
+	//Create the work array 
+	int* work; 
+
+	//Create the finished array
+	int* fin = malloc(sizeof(int) * processes); 
+
+
+	if(!(work = malloc(sizeof(int) * resources)))
+	{
+		return 0; 
+	}
+
+
+	for(int i=0; i < reasources; i++)
+	{
+		work[i] = available[i]
+	}
+
+	for(int j-0; j < processes; j++)
+	{
+		fin[i] = finish[i]
+	}
+
+	int check=0; 
 
 }
 
-void bankerRun() {
+void bankerRun() 
+{
+		int l = 0;
+
+		for(l=0; l<processes; l++)
+		{
+			printf("\t-->Consumer Threads %d\n", safesq[l]); //From safe sequence 
+		}
 
 }
 
