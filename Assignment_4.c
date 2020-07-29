@@ -131,22 +131,24 @@ int isSafe()
 	//Fill up the work array
 	for(int i=0; i < reasources; i++)
 	{
-		work[i] = available[i]
+		work[i] = available[i];
 	}
 
 	//Fill up the fin array
 	for(int j=0; j < processes; j++)
 	{
-		fin[j] = finish[j]
+		fin[j] = finish[j];
 	}
 
 	//Set all variables to 0
-	int check, k, counter = 0; 
+	int check=0;
+	int k =0;
+	int counter =0;
 
 	//While not finished 
 	while(isFinsihed(fin) ==0)
 	{
-		counter = counter + 1;
+		counter++;
 
 		//Unsafe condition
 		if(counter > processes)
