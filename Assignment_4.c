@@ -35,6 +35,7 @@ pthread_mutex_t mutexNeed;
 //Main Function
 int main(int argc, char* argv[]) {
 
+	//Ensure an argument was provided
 	if (argc < 2) 
 	{
 		printf("Input file name missing...exiting with error code -1\n");
@@ -48,6 +49,26 @@ int main(int argc, char* argv[]) {
         for(int i=0; i< processes; i++)
         {
         	finish[i] =0;
+        }
+
+        while(check ==1)
+        {
+        	char * in_line = malloc(sizeof(int) * 30);		//variable to store the command taken from terminal
+
+        	//Ask user for the command 
+        	printf("/nEnter Command: "); 
+
+        	//If user enters '*', output the current state of the avaliable,max,current and need arrays
+        	if(in_line[0] =='*')
+        	{
+        		printResources();
+        	}
+
+        	else if(in_line[0] =='R' && in_line[1] == 'u' && in_line[2] == 'n')
+        	{
+        		
+        	}
+
         }
 	}
 }
