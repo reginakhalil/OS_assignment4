@@ -113,7 +113,7 @@ int releaseResource(int* Request)
 
 }
 
-
+/* Returns 1 if safe, 0 if not*/
 int isSafe() 
 {
 	//Create the work array 
@@ -134,13 +134,34 @@ int isSafe()
 		work[i] = available[i]
 	}
 
-	//Fill u the fin array
+	//Fill up the fin array
 	for(int j=0; j < processes; j++)
 	{
 		fin[j] = finish[j]
 	}
 
-	int check=0; 
+	//Set all variables to 0
+	int check, k, counter = 0; 
+
+	//While not finished 
+	while(isFinsihed(fin) ==0)
+	{
+		counter = counter + 1;
+
+		//Unsafe condition
+		if(counter > processes)
+		{
+			return 0; 
+		}
+
+		for(int l=0; l < processes; l++)
+		{
+			if(fin[l] ==0)
+			{
+				
+			}
+		}
+	}
 
 }
 
