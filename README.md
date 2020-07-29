@@ -33,10 +33,15 @@ Install or update to the latest version of [Git](https://git-scm.com/book/en/v2/
 
 	- '$ ./Assignment_4 10 5 7 8'
 	Runs the program. The number of each type of resource is passed via command line (i.e. 10 5 7 8). 
- 
+
+
 ## Running the tests
 Explain how to run the automated tests for this system
 Give an example
+
+## Screenshots
+
+## Code Examples 
 
 ## Built With
 
@@ -49,7 +54,7 @@ Please read CONTRIBUTING.md for details on our code of conduct, and the process 
 
 ## Authors
 Raghad Khalil - 180234400
-Divya Naiken - 
+Divya Naiken - 180565500
 See also the list of contributors who participated in this project.
 
 ## License
