@@ -51,12 +51,13 @@ int main(int argc, char* argv[]) {
         	finish[i] =0;
         }
 
+        int check = 1; 
         while(check ==1)
         {
-        	char * in_line = malloc(sizeof(int) * 30);		//variable to store the command taken from terminal
+        	char * in_line = malloc(sizeof(char) * 30);		//variable to store the command taken from terminal
 
         	//Ask user for the command 
-        	printf("/nEnter Command: "); 
+        	printf("\nEnter Command: "); 
 
         	//If user enters '*', output the current state of the avaliable,max,current and need arrays
         	if(in_line[0] =='*')
@@ -66,7 +67,7 @@ int main(int argc, char* argv[]) {
 
         	else if(in_line[0] =='R' && in_line[1] == 'u' && in_line[2] == 'n')
         	{
-        		
+
         	}
 
         }
