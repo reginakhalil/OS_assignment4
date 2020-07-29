@@ -256,7 +256,7 @@ int isComplete(int process){
 	}
 
 	//Process complete
-	finsih[process] = 1; 
+	finish[process] = 1; 
 	return 1; 
 
 }
