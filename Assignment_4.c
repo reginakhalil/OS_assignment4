@@ -59,12 +59,16 @@ int main(int argc, char* argv[]) {
         	//Ask user for the command 
         	printf("\nEnter Command: "); 
 
+        	//Reads line from stream
+        	fgets(in_line, 30, stdin)
+
         	//If user enters '*', output the current state of the avaliable,max,current and need arrays
         	if(in_line[0] =='*')
         	{
         		printResources();
         	}
 
+        	//If the user enters "Run"
         	else if(in_line[0] =='R' && in_line[1] == 'u' && in_line[2] == 'n')
         	{
 
