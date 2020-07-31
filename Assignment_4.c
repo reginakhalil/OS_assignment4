@@ -1,7 +1,7 @@
 /*	AUTHORS:  Raghad Khalil- 180234400, Divya Naiken- 180565500
 	FILE: 180234400_180565500_a04.c.txt
 	PROJECT: Assignment_4
-	DATE: 31-July-2020 */
+	DATE: 01-August-2020 */
 
 #include <stdio.h> 
 #include <stdlib.h> 
@@ -465,7 +465,7 @@ void updateNeed(int process) {
 }
 int allocate(int process, int* Request)
 {
-	for(int j=0; j<reasources; j++)
+	for(int j = 0; j < reasources; j++)
 	{
 		//Make sure that the request is less than avaliable
 		if(request[j] > available[j])
@@ -474,18 +474,29 @@ int allocate(int process, int* Request)
 		}
 	}
 
-	for(int i=0; i < reasources; i++)
+	for(int i = 0; i < reasources; i++)
 	{
+		//lock
 		pthread_mutex_lock(&mutexAllocation);
-		Allocation[processs][i] += Request[i]; 
+
+		//add request 
+		allocation[processs][i] += request[i]; 
+
+		//unlock
 		pthread_mutex_unlock(&mutexAllocation);
-		pthread_mutex_unlock(&mutexAllocation); 
-		Available[i] -= Request[i]; 
+
+		//lock 
+		pthread_mutex_unlock(&mutexAvailable); 
+
+		//remove request 
+		available[i] -= request[i]; 
+
+		//unlock
 		pthread_mutex_unlock(&mutexAvailable);
 	}
 	
 	//Update matrix 
-	updateNeed(process)
+	updateNeed(process);
 	return 1; 
 }
 
