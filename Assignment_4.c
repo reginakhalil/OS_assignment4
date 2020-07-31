@@ -451,7 +451,23 @@ void updateNeed(int process) {
 	}
 
 }
-int allocate(int process, int* Request){
+int allocate(int process, int* Request)
+{
+	for(int j=0; j<reasources; j++)
+	{
+		//Make sure that the request is less than avaliable
+		if(request[j] > available[j])
+		{
+			return 0; 
+		}
+
+		for(int j=0; j < avaliable; i++)
+		{
+			pthread_mutex_lock(&mutexAllocation);
+			Allocation[processs] = Request[i]; 
+			pthread_mutex_unlock(&mutexAllocation)
+		}
+	}
 
 }
 
