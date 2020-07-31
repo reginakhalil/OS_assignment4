@@ -413,15 +413,15 @@ int isSafe()
 			return 0; 
 		}
 
-		for(int i=0; i < processes; i++)
+		for(int l = 0; l < processes; l++)
 		{
-			if(fin[i] ==0)
+			if(fin[l] ==0)
 			{
 				check = 0; 
 
-				for(int j=0; j< reasources && check ==0; j++)
+				for(int v = 0; v < reasources && check == 0; v++)
 				{
-					if(need[i][j] > work[j])
+					if(need[l][v] > work[l])
 					{
 						check = 1; 
 					}
@@ -430,14 +430,15 @@ int isSafe()
 
 				if(check ==0)
 				{
-					safesq[k] = i; 
+					safesq[k] = l; 
 					k++; 
-					for(int j =0; j < reasources; j++)
+
+					for(int u =0; u < reasources; u++)
 					{
-						work[j] += need[i][j];
+						work[u] += need[l][u];
 					}
 
-					fin[i] = 1; 
+					fin[l] = 1; 
 				}
 			}
 			
