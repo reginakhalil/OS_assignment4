@@ -125,15 +125,21 @@ int main(int argc, char* argv[]) {
 
         			if(finish[com[0]] == 0) 
         			{
-        				printf("Request is Denied.\n");
-        			}
+        				//Release resource
+        				if(relase(com) == 0)
+        				{
+        					printf("Request is Denied.\n");
+        				}
 
-        			else
-        			{
-        				printf("Request is Satisfied.\n"); 
+        				else
+        				{
+        					printf("Request is Satisfied.\n");
+        				}
         			}
-
         	}
+
+        	//Free memory 
+        	free(in_line); 
 
         	//----------Release request-----------------
 
@@ -145,12 +151,21 @@ int main(int argc, char* argv[]) {
 
         	//-------free memory-------------------
 
-      		free(allocation); 
-      		free(need); 
-      		free(available); 
-      		free(maximum); 
-      		free(safesequence); 
-      		free(finish); 
+      		for(int a = 0; a < processes; a++) 			//not sure if you can do it like this review later ***
+      		{
+      			free(allocation[a]);
+      			free(max[a]);
+      			free(need[a]); 
+      		}
+
+      		free(allocation);
+      		free(max);
+      		free(need);
+				
+      		free(available); 			//free avaliable
+      		free(maximum); 				//free maximum 
+      		free(safesequence); 		//free safe sequence 
+      		free(finish); 				//free finish 
 
       		return 0;
 
