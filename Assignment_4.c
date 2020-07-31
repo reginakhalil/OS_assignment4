@@ -1,3 +1,16 @@
+/*	AUTHORS: 
+	Raghad Khalil- 180234400
+	Divya Naiken- 180565500
+
+	FILE:
+	180565500  *change this according to who submits
+
+	PROJECT:
+	Assignment_4
+
+	DATE: 
+	31-July-2020 */
+
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h> 
