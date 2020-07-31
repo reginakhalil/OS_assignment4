@@ -49,16 +49,29 @@ Give an example
 
 ### Linux environment
 
-##Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+##Contribution
+
+Functions divisions: 
+	- Divya Naiken:
+		- isSafe(); 
+		- releaseResource(); 
+		- allocate(); 
+		- bankerRun(); 
+		- main(); 
+
+	- Raghad Khalil: 
+		- printResources(); 
+		- init(); 
+		- updateNeed(); 
+		- isComplete(); 
+		- isFinished(); 
+		- main();  
+
 
 ## Authors
 Raghad Khalil - 180234400
 Divya Naiken - 180565500
 See also the list of contributors who participated in this project.
-
-## License
-This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ## Acknowledgment
 
