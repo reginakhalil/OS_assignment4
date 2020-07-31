@@ -104,13 +104,16 @@ int main(int argc, char* argv[]) {
 
         	else if (in_line[0] == 'R' && in_line[1] == 'Q') 
         	{
-        			for(int i=0; in_line[i] != '\0'; i++)
+        			for(int i = 0; in_line[i] != '\0'; i++);
+      
+        			for(int j = 0; j < (i - 2); j++)
         			{
-        				for(int j=0; i<j; j++)
-        				{
-        					in_line[j] = inline[j+2];
-        				}
+        				in_line[j] = in_line[j+2];
         			}
+
+        			int *com = malloc(sizeof(int) * ( resources + 1));
+        			char* temp; 
+        			int j =0; 
 
         	}
 
