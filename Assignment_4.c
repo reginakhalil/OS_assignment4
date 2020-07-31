@@ -142,10 +142,42 @@ int main(int argc, char* argv[]) {
 
     	else if (in_line[0] == 'R' && in_line[1] == 'L')
     	{
-    		for()
-    		
+    		for(int i= 0; in_line[i] != '\0'; i++);
+
+    		for(int j =0; j < (i - 2); j++)
+    		{
+    			in_line[j] = in_line[j + 2]; 
+    		}
+
+    		int* com2 = malloc(sizeof(int) * (reasources + 1)); 
+    		char* tmp2; 
+    		int m2;
+
+    		while(tmp != NULL)
+    		{
+    			com2[m2++] = atoi(tmp2);
+    			tmp2 = strtok(NULL, " ");
+    		}
+
+    		if(finish[com2[0]] == 0) 
+    		{ 
+    			//Release resource
+        		if(relase(com) == 0)
+        		{
+        			printf("Request is Denied.\n");
+        		}
+
+        		else
+        		{
+        			printf("Request is Satisfied.\n");
+        		}
+        	}	
     	}
-    }
+
+    	//Free memory 
+    	free(in_line); 
+
+    }// end of while 
 
     //-------free memory-------------------
 
