@@ -117,11 +117,6 @@ int main(int argc, char* argv[]) {
 
         	}
 
-
-
-
-
-
         	//----------Release request-----------------
 
         	else if (in_line[0] == 'R' && in_line[1] == 'L')
@@ -477,15 +472,21 @@ int allocate(int process, int* Request)
 		{
 			return 0; 
 		}
-
-		for(int j=0; j < avaliable; i++)
-		{
-			pthread_mutex_lock(&mutexAllocation);
-			Allocation[processs] = Request[i]; 
-			pthread_mutex_unlock(&mutexAllocation)
-		}
 	}
 
+	for(int i=0; i < reasources; i++)
+	{
+		pthread_mutex_lock(&mutexAllocation);
+		Allocation[processs][i] += Request[i]; 
+		pthread_mutex_unlock(&mutexAllocation);
+		pthread_mutex_unlock(&mutexAllocation); 
+		Available[i] -= Request[i]; 
+		pthread_mutex_unlock(&mutexAvailable);
+	}
+	
+	//Update matrix 
+	updateNeed(process)
+	return 1; 
 }
 
 int isComplete(int process){
