@@ -45,132 +45,127 @@ int main(int argc, char* argv[]) {
 	{
 		printf("Input file name missing...exiting with error code -1\n");
         return -1;
+    }
 
-        //Initialize the arrays and variables 
-        //Pass in the values from terminal
-        init(argc, argv);
+    //Initialize the arrays and variables 
+    //Pass in the values from terminal
+    init(argc, argv);
 
-        //Initialize the complete array 
-        for(int i=0; i< processes; i++)
-        {
-        	finish[i] =0;
-        }
+    //Initialize the complete array 
+    for(int i=0; i< processes; i++)
+    {
+      	finish[i] =0;
+    }
 
-        int check = 1; 
-        while(check ==1)
-        {
-        	char * in_line = malloc(sizeof(char) * 30);		//variable to store the command taken from terminal
+    int check = 1; 
+    while(check ==1)
+    {
+    	char * in_line = malloc(sizeof(char) * 30);		//variable to store the command taken from terminal
 
-        	//Ask user for the command 
-        	printf("\nEnter Command: "); 
+    	//Ask user for the command 
+    	printf("\nEnter Command: "); 
 
-        	//Reads line from stream
-        	fgets(in_line, 30, stdin)
+    	//Reads line from stream
+    	fgets(in_line, 30, stdin)
 
-        	//If user enters '*', output the current state of the avaliable,max,current and need arrays
-        	if(in_line[0] =='*')
-        	{
-        		printResources();
-        	}
+    	//If user enters '*', output the current state of the avaliable,max,current and need arrays
+    	if(in_line[0] =='*')
+    	{
+    		printResources();
+    	}
 
-        	//If the user enters "Run"
-        	else if(in_line[0] =='R' && in_line[1] == 'u' && in_line[2] == 'n')
-        	{
-        		//run the safe algorithm to avoid deadlocks 
-        		if (isSafe() == 1) {
-        			printf("Safe Sequence is: < ");
-        			//print the safe sequence 
-        			for (int i = 0; i < processes; i++) {
-        				printf("%d ", safesequence[i]);
-        			}
+    	//If the user enters "Run"
+    	else if(in_line[0] =='R' && in_line[1] == 'u' && in_line[2] == 'n')
+    	{
+    		//run the safe algorithm to avoid deadlocks 
+    		if (isSafe() == 1) {
+    			printf("Safe Sequence is: < ");
+    			//print the safe sequence 
+    			for (int i = 0; i < processes; i++) {
+    				printf("%d ", safesequence[i]);
+    			}
 
-        			printf(" >\nNow going to execute the threads:\n\n\n\n");
+    			printf(" >\nNow going to execute the threads:\n\n\n\n");
 
-	        		//run the banker algorithm 
-	        		bankerRun(); 
+        		//run the banker algorithm 
+        		bankerRun(); 
 
-	        		printf("\n = Success! = \n");
-	        		printf("All processes finished without deadlock\n"); 
-        		}
-        		else { 
-        			//system is in deadlock 
-        			printf("\nSystem is in deadlock state\n"); 
+        		printf("\n = Success! = \n");
+        		printf("All processes finished without deadlock\n"); 
+    		}
+    		else { 
+    			//system is in deadlock 
+    			printf("\nSystem is in deadlock state\n"); 
 
-        		}
-        		check = 0; 
-        	}
+    		}
+    		check = 0; 
+    	}
 
-        	//-----------request allocation---------------
+    	//-----------request allocation---------------
 
-        	else if (in_line[0] == 'R' && in_line[1] == 'Q') 
-        	{
-        			for(int k = 0; in_line[k] != '\0'; i++);
-      
-        			for(int l = 0; l < (k - 2); l++)
-        			{
-        				in_line[l] = in_line[l + 2];
-        			}
+    	else if (in_line[0] == 'R' && in_line[1] == 'Q') 
+    	{
+    			for(int k = 0; in_line[k] != '\0'; i++);
+  
+    			for(int l = 0; l < (k - 2); l++)
+    			{
+    				in_line[l] = in_line[l + 2];
+    			}
 
-        			int* com = malloc(sizeof(int) * ( resources + 1));
-        			char* tmp; 
-        			int m = 0; 
+    			int* com = malloc(sizeof(int) * (resources + 1));
+    			char* tmp; 
+    			int m = 0; 
 
-        			tmp = strtok(in_line, " ");
+    			tmp = strtok(in_line, " ");
 
-        			while(tmp != NULL)
-        			{
-        				com[m++] = atoi(tmp);
-        				tmp = strtok(NULL, " ");
-        			}
+    			while(tmp != NULL)
+    			{
+    				com[m++] = atoi(tmp);
+    				tmp = strtok(NULL, " ");
+    			}
 
-        			if(finish[com[0]] == 0) 
-        			{
-        				//Release resource
-        				if(relase(com) == 0)
-        				{
-        					printf("Request is Denied.\n");
-        				}
+    			if(finish[com[0]] == 0) 
+    			{
+    				//Allocate through thread
+    				pthread_t tid; 
 
-        				else
-        				{
-        					printf("Request is Satisfied.\n");
-        				}
-        			}
-        	}
+    				pthread_create(&tid, NULL, request, (int*)com);
 
-        	//Free memory 
-        	free(in_line); 
+    				pthread_join(tid, NULL); 
+    			}
+    	}
 
-        	//----------Release request-----------------
+    	//Free memory 
+    	free(in_line); 
 
-        	else if (in_line[0] == 'R' && in_line[1] == 'L')
-        	{
-        		
-        	}
+    	//----------release request-----------------
 
+    	else if (in_line[0] == 'R' && in_line[1] == 'L')
+    	{
+    		for()
+    		
+    	}
+    }
 
-        	//-------free memory-------------------
+    //-------free memory-------------------
 
-      		for(int a = 0; a < processes; a++) 			//not sure if you can do it like this review later ***
-      		{
-      			free(allocation[a]);
-      			free(max[a]);
-      			free(need[a]); 
-      		}
+  	for(int a = 0; a < processes; a++) 			//not sure if you can do it like this review later *** might need seperate for loops 
+  	{
+  		free(allocation[a]);
+  		free(max[a]);
+  		free(need[a]); 
+  	}
 
-      		free(allocation);
-      		free(max);
-      		free(need);
-				
-      		free(available); 			//free avaliable
-      		free(maximum); 				//free maximum 
-      		free(safesequence); 		//free safe sequence 
-      		free(finish); 				//free finish 
+  	free(allocation);
+  	free(max);
+  	free(need);
+			
+  	free(available); 			//free avaliable
+  	free(maximum); 				//free maximum 
+  	free(safesequence); 		//free safe sequence 
+  	free(finish); 				//free finish 
 
-      		return 0;
-
-        }
-	}
+  	return 0;      
 }
 
 //This function initialized arrays and variables
