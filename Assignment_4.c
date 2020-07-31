@@ -97,7 +97,15 @@ int main(int argc, char* argv[]) {
 
         	//-----------request allocation---------------
 
-        	else if (in_line[0] == 'R' && in_line[1] == 'Q') {
+        	else if (in_line[0] == 'R' && in_line[1] == 'Q') 
+        	{
+        			for(int i=0; in_line[i] != '\0'; i++)
+        			{
+        				for(int j=0; i<j; j++)
+        				{
+        					in_line[j] = inline[j+2];
+        				}
+        			}
 
         	}
 
@@ -108,7 +116,8 @@ int main(int argc, char* argv[]) {
 
         	//----------Release request-----------------
 
-        	else if (in_line[0] == 'R' && in_line[1] == 'L') {
+        	else if (in_line[0] == 'R' && in_line[1] == 'L')
+        	{
         		
         	}
 
