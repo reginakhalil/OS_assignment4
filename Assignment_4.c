@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
     		printResources();
     	}
 
-    	//If the user enters "Run"
+    	//--------------------run----------------------
     	else if(in_line[0] =='R' && in_line[1] == 'u' && in_line[2] == 'n')
     	{
     		//run the safe algorithm to avoid deadlocks 
@@ -142,11 +142,11 @@ int main(int argc, char* argv[]) {
 
     	else if (in_line[0] == 'R' && in_line[1] == 'L')
     	{
-    		for(int i= 0; in_line[i] != '\0'; i++);
+    		for(int t= 0; in_line[t] != '\0'; t++);
 
-    		for(int j =0; j < (i - 2); j++)
+    		for(int v =0; v < (v - 2); v++)
     		{
-    			in_line[j] = in_line[j + 2]; 
+    			in_line[v] = in_line[v + 2]; 
     		}
 
     		int* com2 = malloc(sizeof(int) * (reasources + 1)); 
@@ -337,9 +337,6 @@ int init(int argc, char** argv) {
 }
 
 
-
-
-
 void* requestResource(void* proc_in) {
 	int Request[resources]; 
 	int* proc = (int*)proc_in; 
@@ -416,15 +413,41 @@ int isSafe()
 			return 0; 
 		}
 
-		for(int l=0; l < processes; l++)
+		for(int i=0; i < processes; i++)
 		{
-			if(fin[l] ==0)
+			if(fin[i] ==0)
 			{
-				
+				check = 0; 
+
+				for(int j=0; j< reasources && check ==0; j++)
+				{
+					if(need[i][j] > work[j])
+					{
+						check = 1; 
+					}
+				}
+
+
+				if(check ==0)
+				{
+					safesq[k] = i; 
+					k++; 
+					for(int j =0; j < reasources; j++)
+					{
+						work[j] += need[i][j];
+					}
+
+					fin[i] = 1; 
+				}
 			}
+			
 		}
 	}
 
+	//Free memory 
+	free(fin);
+	free(work); 
+	return 1;
 }
 
 void bankerRun() 
