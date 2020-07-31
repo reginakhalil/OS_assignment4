@@ -104,16 +104,34 @@ int main(int argc, char* argv[]) {
 
         	else if (in_line[0] == 'R' && in_line[1] == 'Q') 
         	{
-        			for(int i = 0; in_line[i] != '\0'; i++);
+        			for(int k = 0; in_line[k] != '\0'; i++);
       
-        			for(int j = 0; j < (i - 2); j++)
+        			for(int l = 0; l < (k - 2); l++)
         			{
-        				in_line[j] = in_line[j+2];
+        				in_line[l] = in_line[l + 2];
         			}
 
-        			int *com = malloc(sizeof(int) * ( resources + 1));
-        			char* temp; 
-        			int j =0; 
+        			int* com = malloc(sizeof(int) * ( resources + 1));
+        			char* tmp; 
+        			int m = 0; 
+
+        			tmp = strtok(in_line, " ");
+
+        			while(tmp != NULL)
+        			{
+        				com[m++] = atoi(tmp);
+        				tmp = strtok(NULL, " ");
+        			}
+
+        			if(finish[com[0]] == 0) 
+        			{
+        				printf("Request is Denied.\n");
+        			}
+
+        			else
+        			{
+        				printf("Request is Satisfied.\n"); 
+        			}
 
         	}
 
