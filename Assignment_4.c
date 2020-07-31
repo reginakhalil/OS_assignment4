@@ -78,9 +78,36 @@ int main(int argc, char* argv[]) {
 	}
 }
 
+//This function initialized arrays and variables
 int init(int argc, char** argv){
 
-}
+	//Read Data from the input file
+
+	char* line_read = malloc(sizeof(char) * 10); 
+
+	for (int i = 1; i < argc; i++) {
+		resources = i - 1; 
+	}
+
+	if ((available = malloc(resources * sizeof(int)) == NULL) {
+		return -1; 
+
+	}
+
+	int j = 0; 
+	for (int i = 1; i < argc; i++) {
+		available[j++] = atoi(argv[i]); 
+	}
+
+	//open the file and extract its data 
+	FILE* fp; 
+	if ((file = fopen("input.txt", "r")) == NULL) {
+		printf("Error opening file. Please try again\n");
+		return -1; 
+
+	}
+
+
 
 void* requestResource(void* proc_in) {
 	int Request[resources]; 
@@ -91,6 +118,7 @@ void* requestResource(void* proc_in) {
 		Request[k] = proc[k + 1]; 
 	}
 
+	//if check if process can be allocated and if process is completed
 	if (allocate(process, Request) == 1) {
 		printf("Request Satisfied.\n"); 
 		if (isComplete(process) == 1) {
@@ -98,6 +126,7 @@ void* requestResource(void* proc_in) {
 		}
 	}
 	else {
+		//if proccess is already allocated, deny request. 
 		printf("Request Denied.\n");
 	}
 	//free memory
