@@ -257,6 +257,7 @@ void printResources() {
 
 void updateNeed(int process) {
 
+	// need = max - allocation 
 	for(int i = 0; i < resources; i++) {
 		need[process][i] = maximum[process][i] - allocation[process][i];
 	}
@@ -268,6 +269,7 @@ int allocate(int process, int* Request){
 
 int isComplete(int process){
 
+	//returns 0 if process is not complete
 	for (int i = 0; i < resources; i++) {
 		if (allocation[process][i] != maximum[process[i]]) {
 			return 0; 
@@ -278,19 +280,21 @@ int isComplete(int process){
 		available[i] += maximum[process][i]; 
 	}
 
-	//Process complete
+	//Returns 1 if process is complete
 	finish[process] = 1; 
 	return 1; 
 
 }
 int isFinsihed(int* fin) {
 
+	//returns 0 if process is not finished
 	for (int = 0; i < processes; i++) {
 		if (fin[i] == 0) {
 			return 0; 
 		}
 	}
 
+	//returns 1 if process is finished
 	return 1; 
 
 }
