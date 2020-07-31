@@ -52,20 +52,20 @@ Give an example
 ##Contribution
 
 Functions divisions: 
-	- Divya Naiken:
-		- isSafe(); 
-		- releaseResource(); 
-		- allocate(); 
-		- bankerRun(); 
-		- main(); 
+- Divya Naiken:
+	- isSafe(); 
+	- releaseResource(); 
+	- allocate(); 
+	- bankerRun(); 
+	- main(); 
 
-	- Raghad Khalil: 
-		- printResources(); 
-		- init(); 
-		- updateNeed(); 
-		- isComplete(); 
-		- isFinished(); 
-		- main();  
+- Raghad Khalil: 
+	- printResources(); 
+	- init(); 
+	- updateNeed(); 
+	- isComplete(); 
+	- isFinished(); 
+	- main();  
 
 
 ## Authors
