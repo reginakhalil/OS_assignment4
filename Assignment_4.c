@@ -367,6 +367,16 @@ void* requestResource(void* proc_in) {
 int releaseResource(int* Request) 
 {
 
+	//Check requests and allocation 
+
+
+	//Mutex part 
+	
+
+	//update Need
+	updateNeed(process); 
+
+	return 1; //success
 
 }
 
