@@ -71,7 +71,7 @@ Functions divisions:
 ## Authors
 - Raghad Khalil - 180234400
 - Divya Naiken - 180565500
-See also the list of contributors who participated in this project.
+- See also the list of contributors who participated in this project.
 
 ## Acknowledgment
 
