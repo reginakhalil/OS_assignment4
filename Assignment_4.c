@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 
         //Initialize the arrays and variables 
         //Pass in the values from terminal
-        //init(argc, argv)
+        init(argc, argv);
 
         //Initialize the complete array 
         for(int i=0; i< processes; i++)
@@ -71,8 +71,58 @@ int main(int argc, char* argv[]) {
         	//If the user enters "Run"
         	else if(in_line[0] =='R' && in_line[1] == 'u' && in_line[2] == 'n')
         	{
+        		//run the safe algorithm to avoid deadlocks 
+        		if (isSafe() == 1) {
+        			printf("Safe Sequence is: < ");
+        			//print the safe sequence 
+        			for (int i = 0; i < processes; i++) {
+        				printf("%d ", safesequence[i]);
+        			}
+
+        			printf(" >\nNow going to execute the threads:\n\n\n\n");
+
+	        		//run the banker algorithm 
+	        		bankerRun(); 
+
+	        		printf("\n = Success! = \n");
+	        		printf("All processes finished without deadlock\n"); 
+        		}
+        		else { 
+        			//system is in deadlock 
+        			printf("\nSystem is in deadlock state\n"); 
+
+        		}
+        		check = 0; 
+        	}
+
+        	//-----------request allocation---------------
+
+        	else if (in_line[0] == 'R' && in_line[1] == 'Q') {
 
         	}
+
+
+
+
+
+
+        	//----------Release request-----------------
+
+        	else if (in_line[0] == 'R' && in_line[1] == 'L') {
+        		
+        	}
+
+
+        	//-------free memory-------------------
+
+      		free(allocation); 
+      		free(need); 
+      		free(available); 
+      		free(maximum); 
+      		free(safesequence); 
+      		free(finish); 
+
+      		return 0;
 
         }
 	}
@@ -120,7 +170,7 @@ int init(int argc, char** argv) {
 	//file read//
 
 	//Safe sequence dynamic array 
-	safesq = malloc(processes * sizeof(int)); 
+	safesequence = malloc(processes * sizeof(int)); 
 
 	//print number of customers, hence the number of processes
 	printf("Number of Customers: %d\n", processes); 
