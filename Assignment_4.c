@@ -1,15 +1,7 @@
-/*	AUTHORS: 
-	Raghad Khalil- 180234400
-	Divya Naiken- 180565500
-
-	FILE:
-	180565500  *change this according to who submits
-
-	PROJECT:
-	Assignment_4
-
-	DATE: 
-	31-July-2020 */
+/*	AUTHORS:  Raghad Khalil- 180234400, Divya Naiken- 180565500
+	FILE: 180234400_180565500_a04.c.txt
+	PROJECT: Assignment_4
+	DATE: 31-July-2020 */
 
 #include <stdio.h> 
 #include <stdlib.h> 
