@@ -27,17 +27,15 @@ Install or update to the latest version of [Git](https://git-scm.com/book/en/v2/
 		- python
 		- ssh
 
+## Running the tests
 - How to Run
-	- '$ make warnings_OK'
+	- '$ make Assignment_4'
 	Complies your program with warnings enabled but not fatal. If successful, you should now have a file name Assignment_4 (with no extention). 
 
 	- '$ ./Assignment_4 10 5 7 8'
 	Runs the program. The number of each type of resource is passed via command line (i.e. 10 5 7 8). 
 
-
-## Running the tests
-Explain how to run the automated tests for this system
-Give an example
+	- See screenshots below
 
 ## Screenshots
 
