@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
     int check = 1; 
     while(check ==1)
     {
-    	char * in_line = malloc(sizeof(char) * 30);		//variable to store the command taken from terminal
+    	char* in_line = malloc(sizeof(char) * 30);		//variable to store the command taken from terminal
 
     	//Ask user for the command 
     	printf("\nEnter Command: "); 
@@ -78,10 +78,12 @@ int main(int argc, char* argv[]) {
     	else if(in_line[0] =='R' && in_line[1] == 'u' && in_line[2] == 'n')
     	{
     		//run the safe algorithm to avoid deadlocks 
-    		if (isSafe() == 1) {
+    		if (isSafe() == 1) 
+    		{
     			printf("Safe Sequence is: < ");
     			//print the safe sequence 
-    			for (int i = 0; i < processes; i++) {
+    			for (int i = 0; i < processes; i++) 
+    			{
     				printf("%d ", safeseq[i]);
     			}
 
@@ -93,7 +95,8 @@ int main(int argc, char* argv[]) {
         		printf("\n = Success! = \n");
         		printf("All processes finished without deadlock\n"); 
     		}
-    		else { 
+    		else 
+    		{ 
     			//system is in deadlock 
     			printf("\nSystem is in deadlock state\n"); 
 
@@ -446,7 +449,7 @@ int isSafe()
 
 				for(int v = 0; v < resources && check == 0; v++)
 				{
-					if(need[l][v] > work[l])
+					if(need[l][v] > work[v])
 					{
 						check = 1; 
 					}
