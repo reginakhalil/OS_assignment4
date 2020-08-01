@@ -45,9 +45,9 @@ Install or update to the latest version of [Git](https://git-scm.com/book/en/v2/
 
 ## Built With
 
-### C programming language 
+- C programming language 
 
-### Linux environment
+- Linux environment (Ubuntu machine) 
 
 ##Contribution
 
