@@ -242,10 +242,10 @@ int init(int argc, char** argv) {
 	safeseq = malloc(processes * sizeof(int)); 
 
 	//print number of customers, hence the number of processes
-	printf("Number of Customers: %d\n", processes); 
+	printf("Number of Customers: %d", processes); 
 
 	//print the available resources
-	printf("Currently Available Resources: \n");
+	printf("\nCurrently Available Resources: ");
 	for (int i = 0; i < resources; i++) {
 		printf("%d", available[i]); 
 	}
@@ -639,7 +639,7 @@ int allocate(int process, int* request)
 		pthread_mutex_lock(&mutexAllocation);
 
 		//add request 
-		allocation[processs][i] += request[i]; 
+		allocation[process][i] += request[i]; 
 
 		//unlock
 		pthread_mutex_unlock(&mutexAllocation);
@@ -663,7 +663,7 @@ int isComplete(int process){
 
 	//returns 0 if process is not complete
 	for (int i = 0; i < resources; i++) {
-		if (allocation[process][i] != maximum[process[i]]) {
+		if (allocation[process][i] != maximum[process][i]) {
 			return 0; 
 		}
 	}
@@ -680,7 +680,7 @@ int isComplete(int process){
 int isFinsihed(int* fin) {
 
 	//returns 0 if process is not finished
-	for (int = 0; i < processes; i++) {
+	for (int i = 0; i < processes; i++) {
 		if (fin[i] == 0) {
 			return 0; 
 		}
