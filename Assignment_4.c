@@ -204,138 +204,106 @@ int main(int argc, char* argv[]) {
 
 //This function initialized arrays and variables
 int init(int argc, char** argv) {
-	//Read Data from the input file
 
-	char* line_read = malloc(sizeof(char) * 10); 
+	int i,j; 
 
-	for (int i = 1; i < argc; i++) {
-		resources = i - 1; 
+	char* in_par = malloc(sizeof(char) * 10); // the line read from the file 
+	for (i = 1; i < argc; i++);
+	resources = i - 1;
+	if (!(available = malloc(resources * sizeof(int))))
+		return 6;
+	j = 0;
+	for (i = 1; i < argc; i++) {
+		available[j++] = atoi(argv[i]);
 	}
 
-	if ((available = malloc(resources * sizeof(int))) == NULL) {
-		return -1; 
-
-	}
-
-	//coverts the paramter from a string to an integer. 
-	int j = 0; 
-	for (int i = 1; i < argc; i++) {
-		available[j++] = atoi(argv[i]); 
-	}
-
-	//open the file and extract its data 
-	FILE* fp; 
-	if ((fp = fopen("sample4_in.txt", "r")) == NULL) {
+	FILE* file;
+	if (!(file = fopen("sample4_in.txt", "r"))) {
 		printf("Error opening file. Please try again\n");
-		return -1; 
-
+		return 9;
 	}
-
-	processes = 0; 
-	char line; 
-
-	while (line != EOF) {
-		line = getc(fp); 
-		if (line == '\n') {
-			processes++; 
-		}
+	processes = 0;
+	char ch;
+	while (ch != EOF) {
+		ch = getc(file);
+		if (ch == '\n')
+			processes++;
 	}
-	fclose(fp); 
-	//file read//
-
-	//Safe sequence dynamic array 
-	safeseq = malloc(processes * sizeof(int)); 
-
-	//print number of customers, hence the number of processes
-	printf("Number of Customers: %d", processes); 
-
-	//print the available resources
-	printf("\nCurrently Available Resources: ");
-	for (int i = 0; i < resources; i++) {
-		printf("%d ", available[i]); 
+	fclose(file);
+	safeseq = malloc(processes * sizeof(int));
+	printf("Number of Customers: %d", processes);
+	printf("\nCurrently Available resources: ");
+	for (i = 0; i < resources; i++) {
+		printf("%d ", available[i]);
 	}
-
-	printf("\nMax Resources: \n"); 
-	if ((fp = fopen("sample4_in.txt", "r")) == NULL) {
-		printf("Error opening file. Please try again\n");
-		return -1; 
+	printf("\nMaximum resources from file:\n");
+	if (!(file = fopen("sample4_in.txt", "r"))) {
+		printf("error: can't open file \n");
+		return 9;
 	}
+	char* tmp;
 
+	// now that we have both processes and resources 
+	// we can set up the Max array (2D) 
 	//--------Create the maximum array------------------
-	char* temp; 
-	if ((maximum = malloc(processes * sizeof(int*))) == NULL) {
-		return -1; 
-	}
-
-	for (int i = 0; i < processes; i++) {
-		if ((maximum[i] = malloc(processes * sizeof(int*))) == NULL) {
-			return -1; 
-	}
-	}
-
-	int i = 0; 
+	
+	if (!(maximum = malloc(processes * sizeof(int*))))
+		return 3;
+	for (i = 0; i < processes; i++)
+		if (!(maximum[i] = malloc(resources * sizeof(int))))
+			return 4;
+	i = 0;
 	while (i < 5) {
-		fgets(line_read, 30, fp); 
-		j = 0; 
-		//split the string on spaces using a tokenizer 
-		temp = strtok(line_read, " "); 
-		while (temp != NULL) {
-			//convert the value to an integer then add it to the maximum array
-			maximum[i][j] = atoi(temp); 
-			temp = strtok(NULL, " "); 
-			j++; 
-
+		fgets(in_par, 30, file);
+		j = 0;
+		// we'll use a tokenizer to split the string on spaces 
+		tmp = strtok(in_par, " ");
+		while (tmp != NULL) {
+			maximum[i][j] = atoi(tmp);
+			tmp = strtok(NULL, " ");
+			j++;
 		}
 		for (j = 0; j < resources; j++) {
-			printf("%d ", maximum[i][j]); 
+			printf("%d ", maximum[i][j]);
 		}
 		printf("\n");
-		i++; 
+		i++;
 	}
-	//---------------------------------------------------
-
-
+	// now we can finish creating the other arrays 
+	// set up Allocation array (2D) 
 	//--------Create the allocation array----------------
-	if ((allocation = malloc(processes *sizeof(int*))) == NULL) {
-		return -1; 
-	}
-	for (int i = 0; i < processes; i++) {
-		if ((allocation[i] = malloc(processes * sizeof(int*))) == NULL) {
-			return -1; 
-		}
-	}
+	if (!(allocation = malloc(processes * sizeof(int*))))
+		return 1;
+	for (i = 0; i < processes; i++)
+		if (!(allocation[i] = malloc(resources * sizeof(int))))
+			return 2;
 	//---------------------------------------------------
 
-
-
+	// set up Need array (2D) 
 	//--------Create the need array-----------------------
-
-	if ((need = malloc(processes *sizeof(int*))) == NULL) {
-		return -1; 
+	if (!(need = malloc(processes * sizeof(int*))))
+		return 7;
+	for (i = 0; i < processes; i++)
+		if (!(need[i] = malloc(resources * sizeof(int))))
+			return 8;
+	for (j = 0; j < processes; j++) {
+		updateNeed(j);
 	}
-	for (int i = 0; i < processes; i++) {
-		if ((need[i] = malloc(processes * sizeof(int*))) == NULL) {
-			return -1; 
-		}
-	}
-
-	for (int j = 0; j < processes; j++) {
-		updateNeed(j); 
-	}
-
 	//---------------------------------------------------
 
 
+	
+	// set up Finish array 
 	//--------Create the finsih array--------------------
-	if ((finish = malloc(processes *sizeof(int*))) == NULL) {
-		return -1; 
-	}
+	if (!(finish = malloc(processes * sizeof(int))))
+		return 5;
 	//---------------------------------------------------
 
-	//Close the file and free memory
-	fclose(fp); 
-	free(line_read); 
-	return 0; 
+	// close the file and exit cleanly 
+	fclose(file);
+	//free memory
+	free(in_par);
+	return 0;
 }
 
 
