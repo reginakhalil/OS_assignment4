@@ -366,12 +366,26 @@ void* requestResource(void* proc_in) {
 
 int releaseResource(int* Request) 
 {
+	int process = Request[0];
+	//Check requests and allocation
 
-	//Check requests and allocation 
-
+	for(int j = 0; j < reasources; j++)
+	{
+		if(Request[j] > Allocation[process][j])
+		{
+			return 1; 
+		}
+	}
 
 	//Mutex part 
-	
+	for(int i = 0; i < reasources; i++)
+	{
+		pthread_mutex_unlock(&mutexAllocation);
+		Allocation[process] -= Request[i + 1];
+
+		available[i]+= Request[i +1];
+		pthread_mutex_unlock(mutexAvailable);
+	}
 
 	//update Need
 	updateNeed(process); 
