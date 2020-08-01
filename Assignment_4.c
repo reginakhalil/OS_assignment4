@@ -220,7 +220,7 @@ int init(int argc, char** argv) {
 
 	//open the file and extract its data 
 	FILE* fp; 
-	if ((fp = fopen("input.txt", "r")) == NULL) {
+	if ((fp = fopen("sample4_in.txt", "r")) == NULL) {
 		printf("Error opening file. Please try again\n");
 		return -1; 
 
@@ -251,7 +251,7 @@ int init(int argc, char** argv) {
 	}
 
 	printf("Max Resources: \n"); 
-	if ((fp = fopen("input.txt", "r")) == NULL) {
+	if ((fp = fopen("sample4_in.txt", "r")) == NULL) {
 		printf("Error opening file. Please try again\n");
 		return -1; 
 	}
