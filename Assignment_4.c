@@ -1,5 +1,7 @@
 /*	AUTHORS:  Raghad Khalil- 180234400, Divya Naiken- 180565500
 	FILE: 180234400_180565500_a04.c.txt
+	GITHUB: reginakhalil, divya_n
+	GITHUB URL: https://github.com/reginakhalil/OS_assignment4
 	PROJECT: Assignment_4
 	DATE: 01-August-2020 */
 
@@ -246,7 +248,7 @@ int init(int argc, char** argv) {
 	// now that we have both processes and resources 
 	// we can set up the Max array (2D) 
 	//--------Create the maximum array------------------
-	
+
 	if (!(maximum = malloc(processes * sizeof(int*))))
 		return 3;
 	for (i = 0; i < processes; i++)
