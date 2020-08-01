@@ -487,12 +487,41 @@ void bankerRun()
 			printf("\t-->Consumer Threads %d\n", safesq[l]); //From safe sequence 
 			printf("\tAlocatted Reasources: ");
 
-			for(j =0; j<reasources; j++)
+			for(int j=0; j<reasources; j++)
 			{
 				printf("%d", allocation[safeseq[l][j]]);
 			}
 
 			printf("\nNeeded: ");
+
+			for(int m=0; m < reasources; m++)
+			{
+				printf("%d", need[safeseq[l][m]]);
+			}
+
+			printf("\n Available");
+
+			for(int i-0; i < reasources; i++)
+			{
+				printf("%d", available[j]);
+			}
+
+			int *com = malloc(sizeod(int) * (reasources)); 
+			int k -0; 
+
+			com[0] = safeseq[l];
+
+			for(int p=0; p < reasources; p++)
+			{
+				com[k++] = need[safeseq[l][p]];
+			}
+
+			printf("\n\tThread has strated\n\t");
+			//Thread
+
+			pthread_t thread; 
+
+			pthread_create(thread, NULL);
 		}
 
 }
