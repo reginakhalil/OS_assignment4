@@ -485,6 +485,14 @@ void bankerRun()
 		for(l=0; l<processes; l++)
 		{
 			printf("\t-->Consumer Threads %d\n", safesq[l]); //From safe sequence 
+			printf("\tAlocatted Reasources: ");
+
+			for(j =0; j<reasources; j++)
+			{
+				printf("%d", allocation[safeseq[l][j]]);
+			}
+
+			printf("\nNeeded: ");
 		}
 
 }
