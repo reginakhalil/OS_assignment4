@@ -380,7 +380,7 @@ int releaseResource(int* Request)
 	//Mutex part 
 	for(int i = 0; i < resources; i++)
 	{
-		pthread_mutex_unlock(&mutexAllocation);
+		pthread_mutex_lock(&mutexAllocation);
 		allocation[process][i] -= Request[i + 1];
 
 		pthread_mutex_unlock(&mutexAllocation);
