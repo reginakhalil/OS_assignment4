@@ -384,6 +384,7 @@ int releaseResource(int* Request)
 		allocation[process][i] -= Request[i + 1];
 
 		pthread_mutex_unlock(&mutexAllocation);
+
 		pthread_mutex_lock(&mutexAvailable);
 
 		available[i] += Request[i+ 1];
@@ -480,50 +481,64 @@ int isSafe()
 
 void bankerRun() 
 {
-		int l = 0;
+	int l = 0;
 
-		for(l=0; l<processes; l++)
+	for(l=0; l<processes; l++)
+	{
+		printf("\t-->Consumer Threads %d\n", safesq[l]); //From safe sequence 
+		printf("\tAlocatted Resources: ");
+
+		for(int j=0; j<resources; j++)
 		{
-			printf("\t-->Consumer Threads %d\n", safesq[l]); //From safe sequence 
-			printf("\tAlocatted Resources: ");
-
-			for(int j=0; j<resources; j++)
-			{
-				printf("%d", allocation[safeseq[l][j]]);
-			}
-
-			printf("\nNeeded: ");
-
-			for(int m=0; m < resources; m++)
-			{
-				printf("%d", need[safeseq[l][m]]);
-			}
-
-			printf("\n Available");
-
-			for(int i-0; i < resources; i++)
-			{
-				printf("%d", available[j]);
-			}
-
-			int *com = malloc(sizeof(int) * (resources + 1));
-			int k = 1; 
-
-			com[0] = safeseq[l];
-
-			for(int p=0; p < resources; p++)
-			{
-				com[k++] = need[safeseq[l][p]];
-			}
-
-			printf("\n\tThread has strated\n\t");
-			//Thread
-
-			pthread_t thread; 
-
-			pthread_create(thread, NULL);
+			printf("%d", allocation[safeseq[l][j]]);
 		}
 
+		printf("\nNeeded: ");
+
+		for(int m=0; m < resources; m++)
+		{
+			printf("%d", need[safeseq[l][m]]);
+		}
+
+		printf("\n Available");
+
+		for(int i-0; i < resources; i++)
+		{
+			printf("%d", available[j]);
+		}
+
+		int *com = malloc(sizeof(int) * (resources + 1));
+		int k = 1; 
+
+		com[0] = safeseq[l];
+
+		for(int p = 0; p < resources; p++)
+		{
+			com[k++] = need[safeseq[l][p]];
+		}
+
+		printf("\n\tThread has strated\n\t");
+		//Thread
+
+		pthread_t thread; 
+
+		pthread_create(&thread, NULL, requestResource, (int*)com); 
+
+		pthread_join(thread, NULL); 
+
+		//Check completion 
+		isComplete(safeseq[l]);
+
+		printf("\tThread has finished");
+		printf("\n\tThread is releasing resources");
+		printf("\n\tNew Available: ");
+
+		for(int d=0; d < resources; d++)
+		{
+			printf("%d", available[d]);
+		}
+		printf("\n"); 
+	}
 }
 
 
