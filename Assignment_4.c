@@ -651,7 +651,7 @@ int allocate(int process, int* request)
 		pthread_mutex_unlock(&mutexAllocation);
 
 		//lock 
-		pthread_mutex_unlock(&mutexAvailable); 
+		pthread_mutex_lock(&mutexAvailable); 
 
 		//remove request 
 		available[i] -= request[i]; 
