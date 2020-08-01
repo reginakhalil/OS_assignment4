@@ -499,7 +499,7 @@ void bankerRun()
 			printf("%d", need[safeseq[l]][m]);
 		}
 
-		printf("\n\tAvailable");
+		printf("\n\tAvailable: ");
 
 		for(int i=0; i < resources; i++)
 		{
@@ -554,7 +554,7 @@ void printResources() {
 	{
 		printf("\tR%d", i); 
 	} 
-	printf("\n");
+	printf(" \n");
 
 	for(int i = 0; i < resources; i++) 
 	{
@@ -563,7 +563,7 @@ void printResources() {
 	//-------------------------------------
 
 	//-----Print Status of Allocation------
-	printf("\n=== Allocation ===\n"); 
+	printf("\n=== Allocation === \n"); 
 
 	for (int i = 0; i < resources; i++) {
 		printf("\tR%d", i);
