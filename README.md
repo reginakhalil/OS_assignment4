@@ -50,8 +50,6 @@ Install or update to the latest version of [Git](https://git-scm.com/book/en/v2/
 - Linux environment (Ubuntu machine) 
 
 ##Contribution
-
-Functions divisions: 
 - Divya Naiken:
 	- isSafe(); 
 	- releaseResource(); 
