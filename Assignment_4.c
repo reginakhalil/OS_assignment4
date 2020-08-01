@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
     	printf("\nEnter Command: "); 
 
     	//Reads line from stream
-    	fgets(in_line, 30, stdin)
+    	fgets(in_line, 30, stdin);
 
     	//If user enters '*', output the current state of the avaliable,max,current and need arrays
     	if(in_line[0] =='*')
@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
     			printf("Safe Sequence is: < ");
     			//print the safe sequence 
     			for (int i = 0; i < processes; i++) {
-    				printf("%d ", safesequence[i]);
+    				printf("%d ", safeseq[i]);
     			}
 
     			printf(" >\nNow going to execute the threads:\n\n\n\n");
@@ -105,38 +105,37 @@ int main(int argc, char* argv[]) {
 
     	else if (in_line[0] == 'R' && in_line[1] == 'Q') 
     	{
-    			for(int k = 0; in_line[k] != '\0'; i++);
-  
-    			for(int l = 0; l < (k - 2); l++)
-    			{
-    				in_line[l] = in_line[l + 2];
-    			}
+    		int k =0;
 
-    			int* com = malloc(sizeof(int) * (resources + 1));
-    			char* tmp; 
-    			int m = 0; 
+			for(k = 0; in_line[k] != '\0'; k++);
 
-    			tmp = strtok(in_line, " ");
+			for(int l = 0; l < (k - 2); l++)
+			{
+				in_line[l] = in_line[l + 2];
+			}
 
-    			while(tmp != NULL)
-    			{
-    				com[m++] = atoi(tmp);
-    				tmp = strtok(NULL, " ");
-    			}
+			int* com = malloc(sizeof(int) * (resources + 1));
+			char* tmp; 
+			int m = 0; 
 
-    			if(finish[com[0]] == 0) 
-    			{
-    				//Allocate through thread
-    				pthread_t tid; 
+			tmp = strtok(in_line, " ");
 
-    				pthread_create(&tid, NULL, request, (int*)com);
+			while(tmp != NULL)
+			{
+				com[m++] = atoi(tmp);
+				tmp = strtok(NULL, " ");
+			}
 
-    				pthread_join(tid, NULL); 
-    			}
+			if(finish[com[0]] == 0) 
+			{
+				//Allocate through thread
+				pthread_t tid; 
+
+				pthread_create(&tid, NULL, requestResource, (int*)com);
+
+				pthread_join(tid, NULL); 
+			}
     	}
-
-    	//Free memory 
-    	free(in_line); 
 
     	//----------release request-----------------
 
@@ -153,7 +152,7 @@ int main(int argc, char* argv[]) {
     		char* tmp2; 
     		int m2;
 
-    		while(tmp != NULL)
+    		while(tmp2 != NULL)
     		{
     			com2[m2++] = atoi(tmp2);
     			tmp2 = strtok(NULL, " ");
@@ -162,7 +161,7 @@ int main(int argc, char* argv[]) {
     		if(finish[com2[0]] == 0) 
     		{ 
     			//Release resource
-        		if(relase(com) == 0)
+        		if(releaseResource(com2) == 0)
         		{
         			printf("Request is Denied.\n");
         		}
@@ -184,17 +183,15 @@ int main(int argc, char* argv[]) {
   	for(int a = 0; a < processes; a++) 			//not sure if you can do it like this review later *** might need seperate for loops 
   	{
   		free(allocation[a]);
-  		free(max[a]);
+  		free(maximum[a]);
   		free(need[a]); 
   	}
 
   	free(allocation);
-  	free(max);
+  	free(maximum);
   	free(need);
-			
   	free(available); 			//free avaliable
-  	free(maximum); 				//free maximum 
-  	free(safesequence); 		//free safe sequence 
+  	free(safeseq); 				//free safe sequence 
   	free(finish); 				//free finish 
 
   	return 0;      
@@ -223,7 +220,7 @@ int init(int argc, char** argv) {
 
 	//open the file and extract its data 
 	FILE* fp; 
-	if ((file = fopen("input.txt", "r")) == NULL) {
+	if ((fp = fopen("input.txt", "r")) == NULL) {
 		printf("Error opening file. Please try again\n");
 		return -1; 
 
