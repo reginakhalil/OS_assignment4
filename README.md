@@ -76,4 +76,5 @@ Functions divisions:
 ## Acknowledgment
 - [Banker's Algorithm](https://www.studytonight.com/operating-system/bankers-algorithm)
 - [Tutorial and Examples](https://www.tutorialandexample.com/bankers-algorithm/)
+- [Safety Algorithm](https://www.geeksforgeeks.org/bankers-algorithm-in-operating-system-2/#:~:text=The%20banker's%20algorithm%20is%20a,should%20be%20allowed%20to%20continue)
 
