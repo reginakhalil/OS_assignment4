@@ -371,9 +371,9 @@ int releaseResource(int* Request)
 
 	for(int j = 0; j < reasources; j++)
 	{
-		if(Request[j] > Allocation[process][j])
+		if(Request[j] > allocation[process][j])
 		{
-			return 1; 
+			return 0; 
 		}
 	}
 
@@ -381,10 +381,13 @@ int releaseResource(int* Request)
 	for(int i = 0; i < reasources; i++)
 	{
 		pthread_mutex_unlock(&mutexAllocation);
-		Allocation[process] -= Request[i + 1];
+		allocation[process][i] -= Request[i + 1];
 
-		available[i]+= Request[i +1];
-		pthread_mutex_unlock(mutexAvailable);
+		pthread_mutex_unlock(&mutexAllocation);
+		pthread_mutex_lock(&mutexAvailable);
+
+		available[i] += Request[i+ 1];
+		pthread_mutex_unlock(&mutexAvailable);
 	}
 
 	//update Need
