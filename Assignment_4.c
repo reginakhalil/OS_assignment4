@@ -22,7 +22,7 @@ int isComplete(int); 		//Check for end process
 int isFinsihed(int*);		//Check if process is finished
 
 //Data structures 
-int* available;    //the amount of avaliable reasources 
+int* available;    //the amount of avaliable resources 
 int** maximum;	   //the max demancd of each customer
 int** allocation;  //the amount currently allocated to each customer
 int** need; 	   //the remaining need of each customer
@@ -149,7 +149,7 @@ int main(int argc, char* argv[]) {
     			in_line[v] = in_line[v + 2]; 
     		}
 
-    		int* com2 = malloc(sizeof(int) * (reasources + 1)); 
+    		int* com2 = malloc(sizeof(int) * (resources + 1)); 
     		char* tmp2; 
     		int m2;
 
@@ -369,7 +369,7 @@ int releaseResource(int* Request)
 	int process = Request[0];
 	//Check requests and allocation
 
-	for(int j = 0; j < reasources; j++)
+	for(int j = 0; j < resources; j++)
 	{
 		if(Request[j] > allocation[process][j])
 		{
@@ -378,7 +378,7 @@ int releaseResource(int* Request)
 	}
 
 	//Mutex part 
-	for(int i = 0; i < reasources; i++)
+	for(int i = 0; i < resources; i++)
 	{
 		pthread_mutex_unlock(&mutexAllocation);
 		allocation[process][i] -= Request[i + 1];
@@ -413,7 +413,7 @@ int isSafe()
 	}
 
 	//Fill up the work array
-	for(int i=0; i < reasources; i++)
+	for(int i=0; i < resources; i++)
 	{
 		work[i] = available[i];
 	}
@@ -446,7 +446,7 @@ int isSafe()
 			{
 				check = 0; 
 
-				for(int v = 0; v < reasources && check == 0; v++)
+				for(int v = 0; v < resources && check == 0; v++)
 				{
 					if(need[l][v] > work[l])
 					{
@@ -460,7 +460,7 @@ int isSafe()
 					safesq[k] = l; 
 					k++; 
 
-					for(int u =0; u < reasources; u++)
+					for(int u =0; u < resources; u++)
 					{
 						work[u] += need[l][u];
 					}
@@ -485,33 +485,33 @@ void bankerRun()
 		for(l=0; l<processes; l++)
 		{
 			printf("\t-->Consumer Threads %d\n", safesq[l]); //From safe sequence 
-			printf("\tAlocatted Reasources: ");
+			printf("\tAlocatted Resources: ");
 
-			for(int j=0; j<reasources; j++)
+			for(int j=0; j<resources; j++)
 			{
 				printf("%d", allocation[safeseq[l][j]]);
 			}
 
 			printf("\nNeeded: ");
 
-			for(int m=0; m < reasources; m++)
+			for(int m=0; m < resources; m++)
 			{
 				printf("%d", need[safeseq[l][m]]);
 			}
 
 			printf("\n Available");
 
-			for(int i-0; i < reasources; i++)
+			for(int i-0; i < resources; i++)
 			{
 				printf("%d", available[j]);
 			}
 
-			int *com = malloc(sizeod(int) * (reasources)); 
-			int k -0; 
+			int *com = malloc(sizeof(int) * (resources + 1));
+			int k = 1; 
 
 			com[0] = safeseq[l];
 
-			for(int p=0; p < reasources; p++)
+			for(int p=0; p < resources; p++)
 			{
 				com[k++] = need[safeseq[l][p]];
 			}
@@ -613,7 +613,7 @@ void updateNeed(int process) {
 }
 int allocate(int process, int* Request)
 {
-	for(int j = 0; j < reasources; j++)
+	for(int j = 0; j < resources; j++)
 	{
 		//Make sure that the request is less than avaliable
 		if(request[j] > available[j])
@@ -622,7 +622,7 @@ int allocate(int process, int* Request)
 		}
 	}
 
-	for(int i = 0; i < reasources; i++)
+	for(int i = 0; i < resources; i++)
 	{
 		//lock
 		pthread_mutex_lock(&mutexAllocation);
