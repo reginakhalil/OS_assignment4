@@ -492,14 +492,14 @@ void bankerRun()
 			printf("%d", allocation[safeseq[l]][j]);
 		}
 
-		printf("\nNeeded: ");
+		printf("\n\tNeeded: ");
 
 		for(int m=0; m < resources; m++)
 		{
 			printf("%d", need[safeseq[l]][m]);
 		}
 
-		printf("\n Available");
+		printf("\n\tAvailable");
 
 		for(int i=0; i < resources; i++)
 		{
@@ -537,6 +537,9 @@ void bankerRun()
 			printf("%d", available[d]);
 		}
 		printf("\n"); 
+
+		//free memory 
+		free(com); 
 	}
 }
 
