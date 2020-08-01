@@ -239,14 +239,14 @@ int init(int argc, char** argv) {
 	//file read//
 
 	//Safe sequence dynamic array 
-	safesequence = malloc(processes * sizeof(int)); 
+	safeseq = malloc(processes * sizeof(int)); 
 
 	//print number of customers, hence the number of processes
 	printf("Number of Customers: %d\n", processes); 
 
 	//print the available resources
 	printf("Currently Available Resources: \n");
-	for (int = 0; i < resources; i++) {
+	for (int i = 0; i < resources; i++) {
 		printf("%d", available[i]); 
 	}
 
@@ -322,7 +322,7 @@ int init(int argc, char** argv) {
 
 
 	//--------Create the finsih array--------------------
-	if ((finsih = malloc(processes *sizeof(int*))) == NULL) {
+	if ((finish = malloc(processes *sizeof(int*))) == NULL) {
 		return -1; 
 	}
 	//---------------------------------------------------
@@ -455,7 +455,7 @@ int isSafe()
 
 				if(check ==0)
 				{
-					safesq[k] = l; 
+					safeseq[k] = l; 
 					k++; 
 
 					for(int u =0; u < resources; u++)
@@ -469,7 +469,6 @@ int isSafe()
 			
 		}
 	}
-
 	//Free memory 
 	free(fin);
 	free(work); 
@@ -482,26 +481,26 @@ void bankerRun()
 
 	for(l=0; l<processes; l++)
 	{
-		printf("\t-->Consumer Threads %d\n", safesq[l]); //From safe sequence 
-		printf("\tAlocatted Resources: ");
+		printf("\t-->Consumer Threads %d\n", safeseq[l]); //From safe sequence 
 
+		printf("\tAllocated Resources: ");
 		for(int j=0; j<resources; j++)
 		{
-			printf("%d", allocation[safeseq[l][j]]);
+			printf("%d", allocation[safeseq[l]][j]);
 		}
 
 		printf("\nNeeded: ");
 
 		for(int m=0; m < resources; m++)
 		{
-			printf("%d", need[safeseq[l][m]]);
+			printf("%d", need[safeseq[l]][m]);
 		}
 
 		printf("\n Available");
 
-		for(int i-0; i < resources; i++)
+		for(int i=0; i < resources; i++)
 		{
-			printf("%d", available[j]);
+			printf("%d", available[i]);
 		}
 
 		int *com = malloc(sizeof(int) * (resources + 1));
@@ -511,7 +510,7 @@ void bankerRun()
 
 		for(int p = 0; p < resources; p++)
 		{
-			com[k++] = need[safeseq[l][p]];
+			com[k++] = need[safeseq[l]][p];
 		}
 
 		printf("\n\tThread has strated\n\t");
@@ -623,7 +622,7 @@ void updateNeed(int process) {
 	}
 
 }
-int allocate(int process, int* Request)
+int allocate(int process, int* request)
 {
 	for(int j = 0; j < resources; j++)
 	{
