@@ -75,4 +75,5 @@ Functions divisions:
 
 ## Acknowledgment
 [Banker's Algorithm](https://www.studytonight.com/operating-system/bankers-algorithm)
+[Tutorial and Examples](https://www.tutorialandexample.com/bankers-algorithm/)
 
