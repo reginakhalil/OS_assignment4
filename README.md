@@ -36,6 +36,9 @@ Install or update to the latest version of [Git](https://git-scm.com/book/en/v2/
 	Runs the program. The number of each type of resource is passed via command line (i.e. 10 5 7 8). 
 
 	- See screenshots below
+<img width="371" alt="Screen Shot 2020-07-31 at 1 38 31 PM" src="https://user-images.githubusercontent.com/59515118/89107544-b67d2f00-d3ff-11ea-89d4-f0547d9d34d5.png">
+<img width="298" alt="Screen Shot 2020-07-31 at 1 39 04 PM" src="https://user-images.githubusercontent.com/59515118/89107545-b7ae5c00-d3ff-11ea-88fe-73cf9f5111d5.png">
+<img width="273" alt="Screen Shot 2020-07-31 at 1 40 47 PM" src="https://user-images.githubusercontent.com/59515118/89107546-b846f280-d3ff-11ea-8506-8a6ff81a449f.png">
 
 ## Screenshots
 
