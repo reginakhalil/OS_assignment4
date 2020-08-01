@@ -480,66 +480,50 @@ int isSafe()
 
 void bankerRun() 
 {
+	int i,j;
 	int l = 0;
-
-	for(l=0; l<processes; l++)
-	{
-		printf("\t-->Consumer Threads %d\n", safeseq[l]); //From safe sequence 
-
+	for (l = 0; l < processes; l++) {
+		printf("\t-->Consumer/Threads %d\n", safeseq[l]);
 		printf("\tAllocated Resources: ");
-		for(int j=0; j<resources; j++)
-		{
-			printf("%d", allocation[safeseq[l]][j]);
+
+		for (j = 0; j < resources; j++) {
+			printf("%d ", allocation[safeseq[l]][j]);
 		}
 
 		printf("\n\tNeeded: ");
 
-		for(int m=0; m < resources; m++)
-		{
-			printf("%d", need[safeseq[l]][m]);
+		for (j = 0; j < resources; j++) {
+			printf("%d ", need[safeseq[l]][j]);
 		}
 
 		printf("\n\tAvailable: ");
 
-		for(int i=0; i < resources; i++)
-		{
-			printf("%d", available[i]);
+		for (j = 0; j < resources; j++) {
+			printf("%d ", available[j]);
 		}
 
-		int *com = malloc(sizeof(int) * (resources + 1));
-		int k = 1; 
-
+		int* com = malloc(sizeof(int) * (resources + 1));
+		int k = 1;
 		com[0] = safeseq[l];
 
-		for(int p = 0; p < resources; p++)
-		{
-			com[k++] = need[safeseq[l]][p];
+		for (j = 0; j < resources; j++) {
+			com[k++] = need[safeseq[l]][j];
 		}
 
-		printf("\n\tThread has strated\n\t");
-		//Thread
-
-		pthread_t thread; 
-
-		pthread_create(&thread, NULL, requestResource, (int*)com); 
-
-		pthread_join(thread, NULL); 
-
-		//Check completion 
+		printf("\n\tThread has started\n\t");
+		pthread_t thread;
+		pthread_create(&thread, NULL, requestResource, (int*)com);
+		pthread_join(thread, NULL);
 		isComplete(safeseq[l]);
-
 		printf("\tThread has finished");
 		printf("\n\tThread is releasing resources");
 		printf("\n\tNew Available: ");
-
-		for(int d=0; d < resources; d++)
-		{
-			printf("%d", available[d]);
+		for (j = 0; j < resources; j++) {
+			printf("%d ", available[j]);
 		}
-		printf("\n"); 
-
-		//free memory 
-		free(com); 
+		
+		printf("\n");
+		//free memory
 	}
 }
 
