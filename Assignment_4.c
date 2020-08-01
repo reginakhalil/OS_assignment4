@@ -144,9 +144,10 @@ int main(int argc, char* argv[]) {
 
     	else if (in_line[0] == 'R' && in_line[1] == 'L')
     	{
-    		for(int t= 0; in_line[t] != '\0'; t++);
+    		int t; 
+    		for(t= 0; in_line[t] != '\0'; t++);
 
-    		for(int v =0; v < (v - 2); v++)
+    		for(int v =0; v < (t - 2); v++)
     		{
     			in_line[v] = in_line[v + 2]; 
     		}
@@ -155,6 +156,7 @@ int main(int argc, char* argv[]) {
     		char* tmp2; 
     		int m2;
 
+    		tmp2 = strtok(NULL, " "); 
     		while(tmp2 != NULL)
     		{
     			com2[m2++] = atoi(tmp2);
@@ -250,10 +252,10 @@ int init(int argc, char** argv) {
 	//print the available resources
 	printf("\nCurrently Available Resources: ");
 	for (int i = 0; i < resources; i++) {
-		printf("%d", available[i]); 
+		printf("%d ", available[i]); 
 	}
 
-	printf("Max Resources: \n"); 
+	printf("\nMax Resources: \n"); 
 	if ((fp = fopen("sample4_in.txt", "r")) == NULL) {
 		printf("Error opening file. Please try again\n");
 		return -1; 
@@ -371,7 +373,7 @@ int releaseResource(int* Request)
 
 	for(int j = 0; j < resources; j++)
 	{
-		if(Request[j] > allocation[process][j])
+		if(Request[j + 1] > allocation[process][j])
 		{
 			return 0; 
 		}
